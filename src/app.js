@@ -2,9 +2,11 @@
 
 const app = {
   title: "Indecision App",
-  subtitle: "Put your life in the hands of a computer",
+  subtitle: "Put your life in the hands of a computer or something",
   options: [],
 };
+
+const numbers = [55, 101, 1000];
 
 const onFormSubmit = (e) => {
   e.preventDefault();
@@ -32,8 +34,9 @@ const renderIndecisionApp = () => {
       <button onClick={clearOptions}>Clear all options</button>
       <p>{app.options.length}</p>
       <ol>
-        <li>Option one</li>
-        <li>Option Two</li>
+        {app.options.map((item) => {
+          return <li key={item}>{item}</li>;
+        })}
       </ol>
       <form onSubmit={onFormSubmit}>
         <input type="text" name="option" />

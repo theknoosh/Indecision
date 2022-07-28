@@ -4,9 +4,11 @@
 
 var app = {
   title: "Indecision App",
-  subtitle: "Put your life in the hands of a computer",
+  subtitle: "Put your life in the hands of a computer or something",
   options: []
 };
+
+var numbers = [55, 101, 1000];
 
 var onFormSubmit = function onFormSubmit(e) {
   e.preventDefault();
@@ -57,16 +59,13 @@ var renderIndecisionApp = function renderIndecisionApp() {
     React.createElement(
       "ol",
       null,
-      React.createElement(
-        "li",
-        null,
-        "Option one"
-      ),
-      React.createElement(
-        "li",
-        null,
-        "Option Two"
-      )
+      app.options.map(function (item) {
+        return React.createElement(
+          "li",
+          { key: item },
+          item
+        );
+      })
     ),
     React.createElement(
       "form",
