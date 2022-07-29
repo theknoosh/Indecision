@@ -8,8 +8,6 @@ var app = {
   options: []
 };
 
-var numbers = [55, 101, 1000];
-
 var onFormSubmit = function onFormSubmit(e) {
   e.preventDefault();
   var option = e.target.elements.option.value;
@@ -23,6 +21,12 @@ var onFormSubmit = function onFormSubmit(e) {
 var clearOptions = function clearOptions() {
   app.options = [];
   renderIndecisionApp();
+};
+
+var onMakeDecision = function onMakeDecision() {
+  var randomNum = Math.floor(Math.random() * app.options.length);
+  var option = app.options[randomNum];
+  alert(option);
 };
 
 var appRoot = document.getElementById("app");
@@ -52,9 +56,9 @@ var renderIndecisionApp = function renderIndecisionApp() {
       "Clear all options"
     ),
     React.createElement(
-      "p",
-      null,
-      app.options.length
+      "button",
+      { disabled: app.options.length == 0, onClick: onMakeDecision },
+      "What should I do?"
     ),
     React.createElement(
       "ol",

@@ -6,8 +6,6 @@ const app = {
   options: [],
 };
 
-const numbers = [55, 101, 1000];
-
 const onFormSubmit = (e) => {
   e.preventDefault();
   const option = e.target.elements.option.value;
@@ -23,6 +21,12 @@ const clearOptions = () => {
   renderIndecisionApp();
 };
 
+const onMakeDecision = () => {
+  const randomNum = Math.floor(Math.random() * app.options.length);
+  const option = app.options[randomNum];
+  alert(option);
+};
+
 const appRoot = document.getElementById("app");
 
 const renderIndecisionApp = () => {
@@ -32,11 +36,11 @@ const renderIndecisionApp = () => {
       {app.subtitle && <p>{app.subtitle}</p>}
       <p>{app.options.length > 0 ? "Here are your options" : "No options"}</p>
       <button onClick={clearOptions}>Clear all options</button>
-      <p>{app.options.length}</p>
+      <button disabled={app.options.length == 0} onClick={onMakeDecision}>What should I do?</button>
       <ol>
-        {app.options.map((item) => {
-          return <li key={item}>{item}</li>;
-        })}
+        {app.options.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
       </ol>
       <form onSubmit={onFormSubmit}>
         <input type="text" name="option" />
