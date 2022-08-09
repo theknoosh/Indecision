@@ -127,16 +127,19 @@ var Option = function (_React$Component4) {
 var Options = function (_React$Component5) {
   _inherits(Options, _React$Component5);
 
-  function Options() {
+  function Options(props) {
     _classCallCheck(this, Options);
 
-    return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+    var _this5 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
+
+    _this5.removeAllAction = _this5.removeAllAction.bind(_this5);
+    return _this5;
   }
 
   _createClass(Options, [{
     key: "removeAllAction",
     value: function removeAllAction() {
-      alert("remove all");
+      console.log(this.props.options);
     }
   }, {
     key: "render",
@@ -146,7 +149,7 @@ var Options = function (_React$Component5) {
         null,
         React.createElement(
           "button",
-          { onClick: this.removeAllAction },
+          { onClick: this.removeAllAction.bind(this) },
           "Remove all"
         ),
         React.createElement(

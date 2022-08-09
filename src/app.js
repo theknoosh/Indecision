@@ -8,7 +8,7 @@ class IndecisionApp extends React.Component {
         <Header title={title} subtitle={subtitle} />
         <Action />
         <Options options={options} />
-        <AddOption options={options}/>
+        <AddOption options={options} />
       </div>
     );
   }
@@ -45,14 +45,18 @@ class Option extends React.Component {
 }
 
 class Options extends React.Component {
+  constructor(props) {
+    super(props);
+    this.removeAllAction = this.removeAllAction.bind(this);
+  }
   removeAllAction() {
-    alert("remove all");
+    console.log(this.props.options);
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.removeAllAction}>Remove all</button>
+        <button onClick={this.removeAllAction.bind(this)}>Remove all</button>
         <p>Options Components Here</p>
         {/* Code to iterate over the array here */}
         {this.props.options.map((option) => (
