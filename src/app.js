@@ -5,7 +5,7 @@ class IndecisionApp extends React.Component {
     this.handlePick = this.handlePick.bind(this);
     this.handleAddOption = this.handleAddOption.bind(this);
     this.state = {
-      options: [],
+      options: props.options,
     };
   }
   handleDeleteOptions() {
@@ -56,22 +56,27 @@ class IndecisionApp extends React.Component {
   }
 }
 
+IndecisionApp.defaultProps = {
+  options: ['Test 1'],
+};
+
 const Header = (props) => {
   return (
     <div>
       <h1>{props.title}</h1>
-      <h2>{props.subtitle}</h2>
+      {props.subtitle && <h2>{props.subtitle}</h2>}
     </div>
   );
+};
+
+Header.defaultProps = {
+  title: "Indecision App",
 };
 
 const Action = (props) => {
   return (
     <div>
-      <button
-        onClick={props.handlePick}
-        disabled={! props.hasOptions}
-      >
+      <button onClick={props.handlePick} disabled={!props.hasOptions}>
         What should I do?
       </button>
     </div>
@@ -116,7 +121,7 @@ class AddOption extends React.Component {
   render() {
     return (
       <div>
-      {this.state.error && <p>{this.state.error}</p>}
+        {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.handleAddOption}>
           <input type="text" name="option" />
           <button>Add Option</button>

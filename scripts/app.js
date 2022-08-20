@@ -20,7 +20,7 @@ var IndecisionApp = function (_React$Component) {
     _this.handlePick = _this.handlePick.bind(_this);
     _this.handleAddOption = _this.handleAddOption.bind(_this);
     _this.state = {
-      options: []
+      options: props.options
     };
     return _this;
   }
@@ -81,6 +81,10 @@ var IndecisionApp = function (_React$Component) {
   return IndecisionApp;
 }(React.Component);
 
+IndecisionApp.defaultProps = {
+  options: ['Test 1']
+};
+
 var Header = function Header(props) {
   return React.createElement(
     "div",
@@ -90,12 +94,16 @@ var Header = function Header(props) {
       null,
       props.title
     ),
-    React.createElement(
+    props.subtitle && React.createElement(
       "h2",
       null,
       props.subtitle
     )
   );
+};
+
+Header.defaultProps = {
+  title: "Indecision App"
 };
 
 var Action = function Action(props) {
@@ -104,10 +112,7 @@ var Action = function Action(props) {
     null,
     React.createElement(
       "button",
-      {
-        onClick: props.handlePick,
-        disabled: !props.hasOptions
-      },
+      { onClick: props.handlePick, disabled: !props.hasOptions },
       "What should I do?"
     )
   );
