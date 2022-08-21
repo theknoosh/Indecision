@@ -82,7 +82,7 @@ var IndecisionApp = function (_React$Component) {
 }(React.Component);
 
 IndecisionApp.defaultProps = {
-  options: ['Test 1']
+  options: []
 };
 
 var Header = function Header(props) {
@@ -201,14 +201,5 @@ var AddOption = function (_React$Component2) {
 
   return AddOption;
 }(React.Component);
-
-// const User = (props) => {
-//   return (
-//     <div>
-//       <p>Name: {props.name}</p>
-//       <p>Age: </p>
-//     </div>
-//   )
-// };
 
 ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById("app"));

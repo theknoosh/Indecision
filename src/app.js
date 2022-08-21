@@ -57,7 +57,7 @@ class IndecisionApp extends React.Component {
 }
 
 IndecisionApp.defaultProps = {
-  options: ['Test 1'],
+  options: [],
 };
 
 const Header = (props) => {
@@ -130,14 +130,5 @@ class AddOption extends React.Component {
     );
   }
 }
-
-// const User = (props) => {
-//   return (
-//     <div>
-//       <p>Name: {props.name}</p>
-//       <p>Age: </p>
-//     </div>
-//   )
-// };
 
 ReactDOM.render(<IndecisionApp />, document.getElementById("app"));
