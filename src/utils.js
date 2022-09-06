@@ -1,14 +1,9 @@
 console.log("utils.js is running");
 
-export const square = (x) => x * x;
+const square = (x) => x * x;
+const add = (a, b) => a + b;
+// const subtract = (a, b) => a - b;
 
-export  const add = (a, b) => a + b;
+export default (a, b) => a - b;
 
-// export { square, add };
-export const isAdult = (age) => {
-    if (age > 17) {
-        return true;
-    } else {
-        return false;
-    }
-}
+export { square, add};
